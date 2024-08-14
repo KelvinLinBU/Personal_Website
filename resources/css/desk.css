@@ -3,7 +3,8 @@ svg {
     height: 256px;
     position: absolute;
     top:225px;
-    right: 41%
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   /* SMOKE */
