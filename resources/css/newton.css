@@ -23,6 +23,7 @@ svg {
   }
 
   .clackercontainer{
-    width: 100px;
+    width: 300px;
     background-color: white;
+    left:50%;
   }
