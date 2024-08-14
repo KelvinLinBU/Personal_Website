@@ -109,7 +109,7 @@
 
 .cardHeader {
     display: grid;
-    grid-template-columns: 36px auto 100px;
+    grid-template-columns: 10px auto 100px;
     align-items: center;
     text-transform: uppercase;
 }
