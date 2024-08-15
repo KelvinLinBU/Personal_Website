@@ -1,4 +1,2 @@
-# Personal_Website
-•	Utilized HTML and CSS to produce a dynamic and interactive personal website with 10+ features and 3 unique layouts applying open-sourced CSS code.
-
-•	Maintained and hosted a webpage with a custom domain utilizing GitHub Pages foregoing hosting services and paid website design software in order to cut expenses and costs by over 97%.
+## Personal Website
+Welcome to my personal website! This is the repository where you can find the source code to my website. The website was developed by me with some of the more complex css adapted from free online css resources. This website is being continually updated and maintained. The website is best viewed on Macs, but it should work on many different machines. 
