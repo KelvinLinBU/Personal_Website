@@ -77,14 +77,15 @@ h1, h2, h3, h4 {
 }
 
 .comp {
-  width: 100%;
-  height: 194px;
+  width: 100%; /* Ensure the element takes up the full width of its container */
+  max-width: 875px; /* Set a max-width to prevent it from stretching too wide */
+  height: 250px;
   text-align: center;
-  margin-top: 650px;
-  padding-right: 875px;
-  margin-left: -90px;
-  margin-bottom: 100px;
+  margin: 0px auto 100px auto; /* Vertically center and set equal auto margins for horizontal centering */
+  padding-right: 0; /* Remove the padding-right since we are centering the element */
 }
+
+
 .comp .monitor {
   width: 275px;
   height: 181px;
