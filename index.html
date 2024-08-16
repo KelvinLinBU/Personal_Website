@@ -22,7 +22,6 @@
         <link href="./resources/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
     <body>
-        
         <nav class="social" style="z-index:30">
             <ul>
                 <li><a href="mailto:kelvin@bu.edu">Email<i class="fa fa-envelope-open"></i></a></li>
@@ -57,7 +56,7 @@
                     </button>
                     </a>
                     
-                    <a href="./resources/Lin_Kelvin_Resume.pdf" download="Kelvin_Lin_Resume" class="resumedownload">
+                    <a href="./resources/Lin_Kelvin_Resume.pdf" download="Kelvin_Lin_Resume" class="Buttoncool">
                         Resume
                     </a>
             </div>
@@ -633,7 +632,26 @@
                             </div>
                         </div>
                         </div>
-                        
+                        <script>
+                            var animateButton = function(e) {
+                                
+                                // Reset animation
+                                e.target.classList.remove('animate');
+                    
+                                // Trigger the animation
+                                e.target.classList.add('animate');
+                                setTimeout(function() {
+                                    e.target.classList.remove('animate');
+                                }, 700);
+                            };
+                    
+                            // Attach the event listener to the button(s)
+                            var bubblyButtons = document.getElementsByClassName('Buttoncool');
+                    
+                            for (var i = 0; i < bubblyButtons.length; i++) {
+                                bubblyButtons[i].addEventListener('click', animateButton);
+                            }
+                        </script>     
     </body>
    
     

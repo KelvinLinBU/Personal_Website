@@ -59,7 +59,7 @@
                         Portfolio
                     </button>
                     </a>
-                    <a href="./resources/Lin_Kelvin_Resume.pdf" download="Kelvin_Lin_Resume" class="resumedownload">
+                    <a href="./resources/Lin_Kelvin_Resume.pdf" download="Kelvin_Lin_Resume" class="Buttoncool">
                         Resume
                     </a>
             </div>
@@ -115,5 +115,24 @@
         </div>
     </div>
 </div>
+<script>
+  var animateButton = function(e) {
       
+      // Reset animation
+      e.target.classList.remove('animate');
+
+      // Trigger the animation
+      e.target.classList.add('animate');
+      setTimeout(function() {
+          e.target.classList.remove('animate');
+      }, 700);
+  };
+
+  // Attach the event listener to the button(s)
+  var bubblyButtons = document.getElementsByClassName('Buttoncool');
+
+  for (var i = 0; i < bubblyButtons.length; i++) {
+      bubblyButtons[i].addEventListener('click', animateButton);
+  }
+</script>   
     </body>
