@@ -40,7 +40,7 @@
 }
 
 /* Responsive adjustments */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .middle-section {
         margin-left: 10px; /* Reduce margin on smaller screens */
         margin-right: 10px;
