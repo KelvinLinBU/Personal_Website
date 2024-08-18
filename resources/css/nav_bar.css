@@ -58,7 +58,7 @@
     }
 }
 
-.text-box-name{
+.text-box-name {
     margin-left: 50px;
     font-size: 28px; 
     font-family: Rubik;
@@ -66,33 +66,76 @@
     border: 0px;
     color: rgb(255, 255, 255);
     padding-left: 10px;
-    padding-right:5px;
+    padding-right: 5px;
     background: #231f20;
-    height:80px;
+    height: 40px;
     width: 187.91px;
-    cursor:pointer;
+    cursor: pointer;
+    position: relative; /* Required for the before pseudo-element */
+    overflow: hidden; /* Ensures the underline stays within bounds */
+    transition: color .3s; /* Smooth transition for the color */
 }
 
-.text-box-name:active{
-    color: rgb(192, 192, 192);
+.text-box-name:active {
+    color: rgb(192, 192, 192); /* Color change on active state */
+}
+
+/* Hover underline effect */
+.text-box-name:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness of the underline */
+    background: #ce4f20; /* The color of the underline */
+    scale: 0 1; /* Start with no scale on X-axis */
+    transition: scale .3s, translate 0s .3s; /* Animation properties */
+}
+
+.text-box-name:hover:before {
+    scale: 1; /* Expand the underline */
+    translate: 0; /* Reset translation */
+    transition: .3s; /* Timing for the animation */
 }
 
 
 
-.About{
+.About {
     font-family: Rubik;
     font-size: 16px;
     color: white;
-    margin-right:20px;
-    
+    margin-right: 20px;
     background: #231f20;
-    border:none;
+    border: none;
     cursor: pointer;
+    padding: 0 .5em .25em;
+    position: relative; /* Required for the before pseudo-element */
+    overflow: hidden;   /* Required for the before pseudo-element */
+    transition: color .3s; /* Smooth transition for the color */
 }
 
-.About:active{
-    color: rgb(192, 192, 192);
+.About:hover {
+    color: #fff; /* Change text color on hover */
 }
+
+.About:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+    background: #ce4f20; /* the color of the underline */
+    scale: 0 1; /* Start with no scale on X-axis */
+    transition: scale .3s, translate 0s .3s; /* Animation properties */
+}
+
+.About:hover:before {
+    scale: 1; /* Expand the underline */
+    translate: 0; /* Reset translation */
+    transition: .3s; /* Timing for the animation */
+}
+
+.About:active {
+    color: rgb(192, 192, 192); /* Color change on active state */
+}
+
+
 
 .Contact{
     font-family: Rubik;
@@ -120,21 +163,44 @@ body {
 .Buttoncool {
     font-family: Rubik;
     font-size: 16px;
-    color: #fff;
-    margin-right: 20px;
-    margin-left: 20px;
+    color: white;
     background: #231f20;
     border: none;
     cursor: pointer;
-
+    padding: 0 .5em .25em;
     position: relative;
-   
+    overflow: hidden;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: color .3s, transform 0.3s;
 }
 
 .Buttoncool:focus {
     outline: 0;
 }
 
+.Buttoncool:active {
+    color: rgb(192, 192, 192); /* Color change on active state */
+    transform: scale(0.9); /* Scale down slightly when active */
+}
+
+/* Full underline animation with transition */
+.Buttoncool:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = thickness of the underline */
+    background: #ce4f20; /* Color of the underline */
+    scale: 0 1; /* Initial scale, hidden */
+    transition: scale .3s, translate 0s .3s; /* Added transition for smooth animation */
+}
+
+.Buttoncool:hover:before {
+    scale: 1; /* Expand the underline */
+    translate: 0; /* Reset translation */
+    transition: .3s; /* Timing for the animation */
+}
+
+/* Bubble animation */
 .Buttoncool:before,
 .Buttoncool:after {
     position: absolute;
@@ -143,7 +209,7 @@ body {
     width: 140%;
     height: 100%;
     left: -20%;
-    z-index: 30; /* Adjusted z-index to make sure bubbles are visible behind text */
+    z-index: 30; /* Ensure bubbles are visible behind text */
     transition: all ease-in-out 0.5s;
     background-repeat: no-repeat;
 }
@@ -172,15 +238,14 @@ body {
       radial-gradient(circle, transparent 10%, #ffffff 15%, transparent 20%),
       radial-gradient(circle, #ffffff 20%, transparent 20%),
       radial-gradient(circle, #ffffff 20%, transparent 20%),
-      radial-gradient(circle, #ffffff 20%, transparent 20%),
       radial-gradient(circle, #ffffff 20%, transparent 20%);
     background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%,
       20% 20%;
 }
 
-.Buttoncool:active {
-    transform: scale(0.9);
-    color: rgb(192, 192, 192);
+.Buttoncool:hover:before,
+.Buttoncool:hover:after {
+    display: block; /* Show bubbles on hover */
 }
 
 .Buttoncool.animate:before {
@@ -271,3 +336,74 @@ body {
   .resumedownload:active{
     color: rgb(192, 192, 192);
 }
+
+.Contact, .Experience, .Portfolio, .resumedownload {
+    font-family: Rubik;
+    font-size: 16px;
+    color: white;
+    background: #231f20;
+    border: none;
+    cursor: pointer;
+    padding: 0 .5em .25em;
+    position: relative; /* Required for the before pseudo-element */
+    overflow: hidden;   /* Required for the before pseudo-element */
+    transition: color .3s; /* Smooth transition for the color */
+}
+
+.Contact {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.Experience {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.Portfolio {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.resumedownload {
+    margin-left: 20px;
+}
+
+.Contact:hover, .Experience:hover, .Portfolio:hover, .resumedownload:hover {
+    color: #fff; /* Change text color on hover */
+}
+
+.Contact:before, .Experience:before, .Portfolio:before, .resumedownload:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+    background: #ce4f20; /* the color of the underline */
+    scale: 0 1; /* Start with no scale on X-axis */
+    transition: scale .3s, translate 0s .3s; /* Animation properties */
+}
+
+.Contact:hover:before, .Experience:hover:before, .Portfolio:hover:before, .resumedownload:hover:before {
+    scale: 1; /* Expand the underline */
+    translate: 0; /* Reset translation */
+    transition: .3s; /* Timing for the animation */
+}
+
+.Contact:active, .Experience:active, .Portfolio:active, .resumedownload:active {
+    color: rgb(192, 192, 192); /* Color change on active state */
+}
+
+.Buttoncool:before, .Experience:before, .Portfolio:before, .resumedownload:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+    background: #ce4f20; /* the color of the underline */
+    scale: 0 1; /* Start with no scale on X-axis */
+    transition: scale .3s, translate 0s .3s; /* Animation properties */
+}
+
+.Buttoncool:hover:before{
+    scale: 1; /* Expand the underline */
+    translate: 0; /* Reset translation */
+
+}
+
