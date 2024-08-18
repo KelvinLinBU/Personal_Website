@@ -97,9 +97,11 @@ img {
     .box-down {
         position: relative;
         top: 150px;
+        width: 20%;
     }
     .box {
         width: 20%;
+        position: relative;
      
     }
     .header p {
