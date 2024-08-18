@@ -112,6 +112,7 @@
     grid-template-columns: 10px auto 100px;
     align-items: center;
     text-transform: uppercase;
+    text-align: left;
 }
 .cardHeader .cardHeader_type {
     color: black;
