@@ -5,3 +5,15 @@
     text-align: center;
     align-items: center;
 }
+
+.workbox{
+    border-radius: 5px;
+    padding: 15px;
+    margin-left: 100px;  
+    margin-right:100px;
+    margin-bottom:30px;
+    margin-top:30px;
+    background-color: white;
+    text-align: left;
+}
+
