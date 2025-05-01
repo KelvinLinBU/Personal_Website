@@ -5,11 +5,12 @@
   
   .social {
     position: fixed;
-    top: 300px;
-    left:25px;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
     color: #ffffff;
-    
-  }
+}
+
   .social ul {
     padding: 0px;
     transform: translate(-270px, 0);
