@@ -3,10 +3,7 @@ name: Update YouTube stats
 on:
   push:
     branches: [ main ]  
-    paths:
-      - "scripts/**"
-      - "resources/data/youtube_stats.json"
-      - ".github/workflows/update-youtube-stats.yml"
+
 
   schedule:
     # Every day at 11:00 UTC (~6am US Eastern in standard time)
