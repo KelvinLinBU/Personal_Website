@@ -13,7 +13,8 @@ on:
     - cron: "0 11 * * *"
 
   workflow_dispatch: {}  # allow manual runs from the Actions tab
-
+permissions:
+  contents: write 
 jobs:
   update-youtube-stats:
     runs-on: ubuntu-latest
