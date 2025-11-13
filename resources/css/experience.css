@@ -14,6 +14,23 @@
   margin: 0; /* override the 105px top margin */
 }
 
+
+.university_coursework2{
+  font-family: Rubik;
+  font-size: 60px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0; /* override the 105px top margin */
+    font-family: Rubik;
+  font-size: 60px;
+  top: calc(var(--dashboard-top) - 300px); /* sits just above the dashboard */
+  color: #ffffff;
+  text-align: center;
+
+  padding-bottom: 30px;
+  
+}
+
 .workbox{
     border-radius: 5px;
     padding: 15px;
@@ -25,3 +42,56 @@
     text-align: left;
 }
 
+
+
+
+
+/* === Embedded Google Sheet Section === */
+
+.sheet-section {
+  max-width: 1000px;
+  margin: 40px auto 40px;
+  padding: 0 16px;
+  font-family: 'Rubik', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.sheet-title {
+  color: #ffffff;
+  font-size: 32px;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+/* Pixel-outline retro frame */
+.sheet-frame-container {
+  background: #2a2828;
+  border-radius: 12px;
+  padding: 8px;
+  position: relative;
+
+  /* Pixel-style border */
+  outline: 4px solid #3b3939;
+  box-shadow:
+    0 0 0 6px #1e1d1d,
+    0 0 0 10px #3b3939,
+    0 12px 30px rgba(0,0,0,0.35);
+}
+
+
+/* Make scrollable */
+.sheet-frame-container iframe {
+  width: 100%;
+  height: 520px;  /* adjust as needed */
+  border: 0;
+  
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .sheet-title {
+    font-size: 24px;
+  }
+  .sheet-frame-container iframe {
+    height: 380px;
+  }
+}
