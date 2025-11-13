@@ -1,9 +1,17 @@
 .university_coursework{
-    font-size: 40px;
-    color: white;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+  font-family: Rubik;
+  font-size: 60px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0; /* override the 105px top margin */
+    font-family: Rubik;
+  font-size: 60px;
+  top: calc(var(--dashboard-top) - 0px); /* sits just above the dashboard */
+  color: #ffffff;
+  text-align: center;
+
+  padding-bottom: 30px;
+  margin: 0; /* override the 105px top margin */
 }
 
 .workbox{

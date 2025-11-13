@@ -1,0 +1,59 @@
+name: Update YouTube stats
+
+on:
+  push:
+    branches: [ main ]  
+    paths:
+      - "scripts/**"
+      - "resources/data/youtube_stats.json"
+      - ".github/workflows/update-youtube-stats.yml"
+
+  schedule:
+    # Every day at 11:00 UTC (~6am US Eastern in standard time)
+    - cron: "0 11 * * *"
+
+  workflow_dispatch: {}  # allow manual runs from the Actions tab
+
+jobs:
+  update-youtube-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Run stats scripts
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_CHANNEL_ID: ${{ secrets.YT_CHANNEL_ID }}
+        run: |
+          node scripts/fetch_youtube_stats.js
+          node scripts/update-youtube-watchtime.js
+
+      - name: Commit updated youtube_stats.json (if changed)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet resources/data/youtube_stats.json; then
+            echo "No changes to youtube_stats.json"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add resources/data/youtube_stats.json
+          git commit -m "chore: update YouTube stats"
+          git push

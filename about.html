@@ -1,163 +1,271 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RBMQDHKVS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RBMQDHKVS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7RBMQDHKVS');
+    </script>
 
-  gtag('config', 'G-7RBMQDHKVS');
-</script>
-        <title>About</title>
-        <link rel="icon" type="image/x-icon" href="resources/favicon_io/favicon.ico">
-        <link href="./resources/css/index.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/nav_bar.css" type="text/css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-        <link href=./resources/css/computer.css.map>
-        <link href=./resources/css/computer.css>
-        <link href="./resources/css/computer.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/newton.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/badge.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/timeline.css.map">
-        <link href="./resources/css/timeline.css">
-        <link href="./resources/css/timeline.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/timeline.css.map" type="text/css" rel="stylesheet">
-        <link href="./resources/css/cards.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/social_side.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/flowers.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/about.css" type="text/css" rel="stylesheet">
-        <link href="./resources/css/cardabout.css" type="text/css" rel="stylesheet">
-        <link href="./resources/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
+    <title>About</title>
+    <link rel="icon" type="image/x-icon" href="resources/favicon_io/favicon.ico">
+    <link href="./resources/css/index.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/nav_bar.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link href=./resources/css/computer.css.map>
+    <link href=./resources/css/computer.css>
+    <link href="./resources/css/computer.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/newton.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/badge.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/timeline.css.map>
+    <link href="./resources/css/timeline.css">
+    <link href="./resources/css/timeline.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/timeline.css.map" type="text/css" rel="stylesheet">
+    <link href="./resources/css/cards.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/social_side.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/flowers.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/about.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/cardabout.css" type="text/css" rel="stylesheet">
+    <link href="./resources/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- === Responsive, isolated dashboard + spacing === -->
+    <style>
+      /* Title anchor so it doesn't interfere with flowers or cards */
+.section-title {
+  position: absolute;
+  top: calc(var(--dashboard-top) - 125px); /* sits just above the dashboard */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+/* Adds a little bottom breathing room */
+.page-end-spacer {
+  height: 80%;       /* adjust as desired */
+  width: 100%;
+}
+
+/* Slightly larger on mobile for scroll comfort */
+@media (max-width: 520px) {
+  .page-end-spacer { height: 160px; }
+}
+
+/* Reuse your portfolio_text look but remove large margin */
+.section-title .portfolio_text {
+  font-family: Rubik;
+  font-size: 60px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0; /* override the 105px top margin */
+}
+@media (max-width: 820px){
+  .section-title .portfolio_text { font-size: 44px; }
+}
+@media (max-width: 520px){
+  .section-title .portfolio_text { font-size: 34px; }
+}
+
+      /* Tune vertical anchors here */
+      :root{
+        --flowers-gap-fixed: 520px;  /* reserved space for flowers */
+        --dashboard-top: 640px;      /* y-position of dashboard */
+        --cards-top: 1240px;         /* y-position of cards (desktop) */
+      }
+
+      .flowers-spacer{ height: var(--flowers-gap-fixed) !important; }
+
+      /* Anchor keeps dashboard independent of other layout pieces */
+      .dashboard-anchor{
+        position: absolute;
+        top: var(--dashboard-top);
+        left: 50%;
+        
+        transform: translateX(-50%);
+        /* Responsive width with a MIN and MAX: will not shrink below 720px */
+        width: clamp(1000px, 92vw, 980px);
+        z-index: 0;
+        pointer-events: auto;
+      }
+
+      /* Dashboard card: responsive and centered inside anchor */
+      .yt-dashboard{
+        position: static !important;
+        margin: 0 !important;
+        width: 100%;
+        margin-bottom: 200px;
+        padding: 18px 22px;
+        background: #2a2828;
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 18px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        color: #f2f2f2;
+        font-family: 'Rubik', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+
+      .yt-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+      .yt-title{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.2px}
+      .yt-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+      .yt-dot.blue{background:#5DADE2}.yt-dot.red{background:#EC7063}.yt-dot.yellow{background:#F4D03F}
+      .yt-updated{color:#bdbdbd;font-size:12px}
+
+      /* Responsive grid: 4→3→2→1 columns as space tightens */
+      .yt-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+      @media (max-width: 1024px){ .yt-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+      @media (max-width: 820px){  .yt-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+
+      .yt-metric{background:#f1f1f1;color:#1e1d1d;border-radius:16px;padding:16px 14px;box-shadow:0 6px 20px rgba(0,0,0,.20)}
+      .yt-label{font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:#4b4b4b}
+      .yt-value{font-size:28px;font-weight:700;margin-top:6px;line-height:1.1}
+      .yt-sub{font-size:12px;color:#6a6a6a;margin-top:4px}
+      .yt-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;border-radius:999px;padding:6px 10px;margin-top:10px;background:#2a2828;color:#f2f2f2;border:1px solid rgba(255,255,255,.08)}
+      .yt-chip i{font-style:normal;opacity:.9}
+
     
-    <nav class="social" style="z-index:30">
-      <ul>
-          <li><a href="mailto:kelvin@bu.edu">Email<i class="fa fa-envelope-open"></i></a></li>
-        <li><a href="https://github.com/KelvinLinBU">Github <i class="fa fa-github"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/kelvinlinbu/">Linkedin <i class="fa fa-linkedin"></i></a></li>
-        <li><a href="https://medium.com/@kelvinlinBU">Medium <i class="fa fa-medium"></i></a></li>
-        <li>
-  <a href="https://thekelvinlin.substack.com/?r=6jmahb&utm_campaign=pub-share-checklist" target="_blank" rel="noopener noreferrer">
-    Substack <i class="fa fa-newspaper-o"></i>
-  </a>
-</li>
-        <li><a href="https://app.joinhandshake.com/stu/users/32590677">Handshake <i class="fa fa-handshake-o"></i></a></li>
-        <li>
-  <a href="https://www.youtube.com/@Kelvin_Lin_SWE" target="_blank" rel="noopener noreferrer">
-    YouTube <i class="fa fa-youtube"></i>
-  </a>
-</li>
-<li>
-  <a href="https://www.instagram.com/kelvinlin.dev/" target="_blank">
-    Instagram <i class="fa fa-instagram"></i>
-  </a>
-</li>
 
-          </ul>
+      /* Cards anchor: your original stacked cards, just positioned lower.
+         We nudge it further down at smaller widths because the dashboard
+         gets taller when it wraps to 2/1 columns. */
+
+    </style>
+    <!-- === /Responsive, isolated dashboard + spacing === -->
+  </head>
+
+  <nav class="social" style="z-index:30">
+    <ul>
+      <li><a href="mailto:kelvin@bu.edu">Email<i class="fa fa-envelope-open"></i></a></li>
+      <li><a href="https://github.com/KelvinLinBU">Github <i class="fa fa-github"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/kelvinlinbu/">Linkedin <i class="fa fa-linkedin"></i></a></li>
+      <li><a href="https://medium.com/@kelvinlinBU">Medium <i class="fa fa-medium"></i></a></li>
+      <li>
+        <a href="https://thekelvinlin.substack.com/?r=6jmahb&utm_campaign=pub-share-checklist" target="_blank" rel="noopener noreferrer">
+          Substack <i class="fa fa-newspaper-o"></i>
+        </a>
+      </li>
+      <li><a href="https://app.joinhandshake.com/stu/users/32590677">Handshake <i class="fa fa-handshake-o"></i></a></li>
+      <li>
+        <a href="https://www.youtube.com/@Kelvin_Lin_SWE" target="_blank" rel="noopener noreferrer">
+          YouTube <i class="fa fa-youtube"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/kelvinlin.dev/" target="_blank">
+          Instagram <i class="fa fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
   </nav>
-    <body>
-        <div class="header">
-            <div class="left-section">
-                <a href="index.html">
-                <button class="text-box-name">
-                    Kelvin/Lin.
-                </button>
-                </a>
-            </div>
-            <div class="middle-section">
-                    <a href="about.html">
-                    <button class="About">
-                        About
-                    </button>  
-                    </a>
-                    <a href="experience.html">
-                    <button class="Experience">
-                        Experience
-                    </button>
-                    </a>
-                    <a href="index.html#portfolio_section">
-                    <button class="Portfolio">
-                        Portfolio
-                    </button>
-                    </a>
-                    <a href="./resources/Lin_Kelvin_Resume.pdf" download="Kelvin_Lin_Resume" class="Buttoncool">
-                        Resume
-                    </a>
-            </div>
-            <div class="right-section"></div>
+
+  <body>
+    <div class="header">
+      <div class="left-section">
+        <a href="index.html"><button class="text-box-name">Kelvin/Lin.</button></a>
+      </div>
+      <div class="middle-section">
+        <a href="about.html"><button class="About">Analytics</button></a>
+        <a href="experience.html"><button class="Experience">Experience</button></a>
+        <a href="index.html#portfolio_section"><button class="Portfolio">Portfolio</button></a>
+        <a href="./resources/Lin_Kelvin_Resume.pdf" download="Kelvin_Lin_Resume" class="Buttoncool">Resume</a>
+      </div>
+      <div class="right-section"></div>
     </div>
+
+    <!-- Flowers -->
     <div class="growing"></div>
     <div class="bluegrowing"></div>
     <div class="yellowgrowing"></div>
-    <div class="cardaboutcontainer">
-    <div class='deck'>
-        <div class='card'>
-          <header class='cardHeader'>
-            
-            <span class='cardHeader_account'>@KelvinLinBU</span>
-            <span class='cardHeader_date'>Oct 29 4:56</span>
-          </header>
-          <div class='cardBody'>
-            <p class='cardText'>Hello! My name is Kelvin Lin and I am interested in data and full stack software engineering. I am an alum from Boston University, and I graduated in December, 2024. 
-              <span class='cardText_highlight'>#Computerscience</span> <span class='cardText_highlight'>#Hackathon</span> <span class='cardText_highlight'>#BU</span> <span class='cardText_highlight'>#SWE</span></p>
-            
-              </span>
-          </div>
-        </div>
-      
-        <div class='card'>
-          <header class='cardHeader'>
-          
-            <span class='cardHeader_account'>@KelvinLinBU</span>
-            <span class='cardHeader_date'>Nov 3 11:49</span>
-          </header>
-          <div class='cardBody'>
-            <p class='cardText'>I currently have a Bachelor of Arts in Computer Science, and I hold a minor in Business Administration and Management. 
-              <span class='cardText_highlight'>#Computerscience</span> <span class='cardText_highlight'>#Hackathon</span> <span class='cardText_highlight'>#BU</span> <span class='cardText_highlight'>#SWE</span></p>
-            
-              
-              </span>
-          </div>
-        </div>
-      
-        <div class='card'>
-          <header class='cardHeader'>
-          
-            <span class='cardHeader_account'>@KelvinLinBU</span>
-            <span class='cardHeader_date'>Dec 31 5:50</span>
-          </header>
-          <div class='cardBody'>
-            <p class='cardText'>In my free time, I enjoy tinkering around with programming languages, and develop mobile applications. I also enjoy writing about various topics in the area of computer science.
-              <span class='cardText_highlight'>#Computerscience</span> <span class='cardText_highlight'>#Hackathon</span> <span class='cardText_highlight'>#BU</span> <span class='cardText_highlight'>#SWE</span></p>
-            
-              
-              </span>
-          </div>
-        </div>
-    </div>
+
+    <!-- Reserved space so flowers never collide with content -->
+    <div class="flowers-spacer" aria-hidden="true"></div>
+<div class="section-title">
+  <div class="portfolio_text">Media Analytics</div>
 </div>
+    <!-- Responsive, isolated YouTube dashboard -->
+    <div class="dashboard-anchor">
+      <section class="yt-dashboard" aria-label="YouTube stats (mock)">
+        <div class="yt-header">
+          <div class="yt-title">
+            <span class="yt-dot red"></span>
+            <span class="yt-dot blue"></span>
+            <span class="yt-dot yellow"></span>
+            <span style="margin-left:6px;">YouTube Channel — Kelvin Lin</span>
+          </div>
+          <div class="yt-updated"><span id="stat-updatedAt">—</span></div>
+        </div>
+
+        <div class="yt-grid">
+          <div class="yt-metric">
+ <div class="yt-label">Total Views</div>
+  <div class="yt-value"><span id="stat-views">—</span></div>
+  <div class="yt-sub">Lifetime</div>
+          </div>
+          <div class="yt-metric">
+ <div class="yt-label">Watch Time</div>
+  <div class="yt-value"><span id="stat-watch">—</span></div>
+  <div class="yt-sub">Lifetime</div>
+          </div>
+          <div class="yt-metric">
+  <div class="yt-label">Subscribers</div>
+  <div class="yt-value"><span id="stat-subs">—</span></div>
+  <div class="yt-sub">Net · Lifetime</div>
+          </div>
+          <div class="yt-metric">
+  <div class="yt-label">Videos</div>
+  <div class="yt-value"><span id="stat-videos">—</span></div>
+  <div class="yt-sub">Published</div>
+          </div>
+
+    
+        </div>
+
+        <div class="yt-chip"><i>Note</i> These numbers are updated daily using GitHub Actions and Youtube's API. Check back tomorrow for refreshed numbers!</div>
+      </section>
+    </div>
+    <!-- /dashboard-anchor -->
+<!-- Page end spacer for breathing room -->
+<div class="page-end-spacer" aria-hidden="true"></div>
 <script>
-  var animateButton = function(e) {
-      
-      // Reset animation
-      e.target.classList.remove('animate');
+(async function () {
+  try {
+    // Load JSON data
+    const res = await fetch("resources/data/youtube_stats.json", { cache: "no-cache" });
+    const d = await res.json();
 
-      // Trigger the animation
-      e.target.classList.add('animate');
-      setTimeout(function() {
-          e.target.classList.remove('animate');
-      }, 700);
-  };
+    // Handle "Last updated" timestamp (using updatedAt field)
+    const updatedEl = document.querySelector(".yt-updated");
+    if (updatedEl && d.updatedAt) {
+      const dt = new Date(d.updatedAt);
+      const formatted = dt.toLocaleString(undefined, {
+        dateStyle: "medium",
+        timeStyle: "short"
+      });
+      updatedEl.textContent = `Last updated: ${formatted}`;
+    }
 
-  // Attach the event listener to the button(s)
-  var bubblyButtons = document.getElementsByClassName('Buttoncool');
+    // Views, subs, videos (all strings in your JSON)
+    document.getElementById("stat-views").textContent  = d.totalViews || "0";
+    document.getElementById("stat-subs").textContent   = d.subscribers || "—";
+    document.getElementById("stat-videos").textContent = d.videos || "—";
 
-  for (var i = 0; i < bubblyButtons.length; i++) {
-      bubblyButtons[i].addEventListener('click', animateButton);
+    // Watch time — always display "59 hrs" style
+    const watch = d.watch_time_hours;
+    document.getElementById("stat-watch").textContent =
+      (watch !== undefined && watch !== null && watch !== "")
+        ? `${watch} hrs`
+        : "—";
+
+  } catch (e) {
+    console.warn("Failed to load youtube_stats.json", e);
   }
-</script>   
-    </body>
+})();
+</script>
+
+
+  </body>
+</html>
