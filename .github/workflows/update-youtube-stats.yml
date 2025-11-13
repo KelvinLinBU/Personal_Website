@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install googleapis
-        run: npm install googleapis
+        run: npm install googleapis dotenv
 
       - name: Set up Node
         uses: actions/setup-node@v4
