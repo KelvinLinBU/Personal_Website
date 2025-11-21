@@ -37,7 +37,7 @@ jobs:
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
           node scripts/fetch_youtube_stats.js
-          node scripts/update-youtube-watchtime.js
+          # node scripts/update-youtube-watchtime.js
 
       - name: Commit updated youtube_stats.json (if changed)
         env:
