@@ -13,3 +13,325 @@
     box-sizing: border-box; /* Ensures padding and borders are included in width/height */
     padding: 1em; /* Add some padding for better text readability */
 }
+/* =========================
+   BOOK HOVER WIDGET
+   (centered EXACTLY like buy-links)
+   ========================= */
+
+:root{
+  --book-w: 420px;
+  --book-h: 560px;
+  --book-spine: 14px;
+  --book-radius: 18px;
+}
+
+/* This wrapper is centered the same way as your buy-links card */
+.book-shelf{
+  width: min(1180px, 92vw);
+  margin: 85px auto 0;
+
+  /* EXACT same centering pattern as a typical widget/card */
+  display: block;
+  text-align: center;
+}
+
+/* Center the book using auto margins (bulletproof) */
+.book{
+  position: relative;
+
+  /* Include spine in the element's own width so visual centering is true */
+  width: calc(var(--book-w) + var(--book-spine));
+  height: var(--book-h);
+
+  perspective: 1600px;
+  outline: none;
+
+  /* THIS is the "widget style" centering */
+  margin: 0 auto;
+}
+
+/* Pages panel (behind cover) */
+.book-pages{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: var(--book-w);
+  height: var(--book-h);
+
+  background: #111;
+  border-radius: var(--book-radius);
+  overflow: hidden;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+  transform: translateZ(-2px);
+  z-index: 1;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
+
+/* Reveal PDF only when open */
+.book:hover .book-pages,
+.book:focus .book-pages,
+.book:focus-visible .book-pages,
+.book.is-open .book-pages{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* PDF viewer */
+.book-pages iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+   border-radius: var(--book-radius);
+  background: #111;
+}
+
+/* Fallback link overlay */
+.book-open-link{
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  font-family: Rubik, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 13px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Cover */
+.book-cover{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: var(--book-w);
+  height: var(--book-h);
+
+  border-radius: var(--book-radius);
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 650ms cubic-bezier(.2,.9,.2,1), box-shadow 650ms;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+  overflow: hidden;
+  background: #000;
+  z-index: 2;
+}
+
+/* Cover image (front face) */
+.book-cover img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  transform: translateZ(1px);
+}
+
+/* Back-of-cover surface */
+.book-cover::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--book-radius);
+  background: #2a2828;
+
+  transform: rotateY(180deg);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Thickness strip (spine) */
+.book-cover::after{
+  content:"";
+  position: absolute;
+  top: 0;
+  right: calc(-1 * var(--book-spine));
+  width: var(--book-spine);
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0.18), rgba(0,0,0,0.25));
+  transform: translateZ(-1px);
+}
+
+/* OPEN on hover + keyboard focus */
+.book:hover .book-cover,
+.book:focus .book-cover,
+.book:focus-visible .book-cover,
+.book.is-open .book-cover{
+  transform: rotateY(-145deg);
+  box-shadow: 0 22px 75px rgba(0,0,0,0.65);
+}
+
+/* Caption (optional) */
+.book-caption{
+  margin-top: 14px;
+
+  font-family: Rubik, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #bdbdbd;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Mobile scaling */
+
+/* =========================
+   BUY BOOKS WIDGET
+   (same width + centering as YouTube dashboard)
+   ========================= */
+
+/* Uses the same clamp width as .dashboard-anchor */
+.buy-links{
+  width: clamp(1000px, 92vw, 500px);
+  margin: 18px auto 0;
+  padding: 16px 18px;
+  background: #2a2828;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        color: #f2f2f2;
+        font-family: 'Rubik', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #f2f2f2;
+  text-align: left;
+  
+}
+
+.buy-links-title{
+  font-size: 14px;
+
+  font-weight:600;
+color: #ffffff;
+  margin-bottom: 12px;
+  text-align: center;
+          font-family: 'Rubik', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.buy-links-row{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.buy-btn{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #f2f2f2;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.buy-btn:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.14);
+}
+
+.buy-icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+    font-size: 18px;
+  line-height: 1;
+}
+
+.buy-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+  
+}
+
+.buy-name{
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buy-sub{
+  margin-top: 4px;
+  font-size: 12px;
+  color: #bdbdbd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buy-arrow{
+  margin-left: auto;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* Subtle brand accents (not loud) */
+.buy-btn.amazon .buy-icon{ background: rgba(255, 153, 0, 0.10); }
+.buy-btn.bn     .buy-icon{ background: rgba( 44, 140,  90, 0.12); }
+.buy-btn.apple  .buy-icon{ background: rgba(200, 200, 200, 0.10); }
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 820px){
+  .buy-links{
+    width: 92vw;          /* mirrors the dashboard’s responsive behavior */
+    max-width: 980px;
+    min-width: 500px;
+   
+  }
+  .buy-links-row{ grid-template-columns: 1fr; }
+  .buy-btn{ padding: 14px 14px; }
+}
+
+
+/* =========================
+   STORE ANCHOR
+   (fixed Y position from top, centered like dashboard)
+   ========================= */
+
+:root{
+  --store-top: 980px;   /* change this to move the whole store section up/down */
+}
+.store-anchor{
+  position: absolute;
+  top: var(--store-top);
+  left: 50%;
+  transform: translateX(-50%);
+    padding-bottom: 50px;
+  z-index: 1;
+}
+
+.media_text{
+  font-family: Rubik;
+  font-size: 60px;
+  color:#ffffff;
+  text-align: center;
+  margin-bottom: 70px;
+  margin-top: -60px;
+}
+
+.media_text2{
+  font-family: Rubik;
+  font-size: 60px;
+  color:#ffffff;
+  text-align: center;
+  margin-bottom: 70px;
+
+}
